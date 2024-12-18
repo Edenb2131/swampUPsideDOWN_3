@@ -13,6 +13,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: Secrets
+      env:
+        URL: ${{env.API_URL}}
+        USER: ${{ secrets.USER }}
+        PW: ${{ secrets.USER_CRED }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      run:
+        echo "Stelling"
+        echo "$USER"
+        echo "$PW"
+        echo "$SLACK_WEBHOOK_URL"
         
     - name: healthcheck
       continue-on-error: true
